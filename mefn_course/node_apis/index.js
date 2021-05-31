@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 
 // Connect to databse 
@@ -9,11 +10,7 @@ require('./config/connect_database')();
 app.use(express.json({ extended : true }));
 app.use(cors());
 
-
-app.get('/', (req, res) => {
-    res.send("Hii");
-});
-
+app.use(express.static(path.join(__dirname , 'public')));
 
 app.use('/api/register', require('./controllers/apis/register'));
 app.use('/api/login', require('./controllers/apis/login'));
