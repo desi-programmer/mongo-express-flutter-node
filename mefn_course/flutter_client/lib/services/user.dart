@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_client/config.dart';
+import 'package:flutter_client/pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:velocity_x/velocity_x.dart';
@@ -91,6 +93,7 @@ class User {
 
       if (response.statusCode == 200) {
         // everything is ok
+        print("Booked !");
         VxToast.show(context, msg: "Service Booked !");
       } else if (response.statusCode == 401) {
         SharedPreferences prefs = await SharedPreferences.getInstance();

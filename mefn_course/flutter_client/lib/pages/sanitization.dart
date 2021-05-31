@@ -93,7 +93,11 @@ Nam consectetur felis orci, in consequat nisl facilisis vel. Morbi in pulvinar l
                   },
                   child: Text("Book Service").text.size(20.0).semiBold.make(),
                 ),
-              )
+              ),
+              //
+              SizedBox(
+                height: 12.0,
+              ),
             ],
           ),
         ),

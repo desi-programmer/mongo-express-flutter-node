@@ -53,18 +53,22 @@ class _HomePageState extends State<HomePage> {
                   serviceCard(
                     "Cleaning",
                     "assets/images/cleaning.png",
+                    '/cleaning',
                   ),
                   serviceCard(
                     "Plumber",
                     "assets/images/plumber.png",
+                    '/plumber',
                   ),
                   serviceCard(
                     "Sanitization",
                     "assets/images/sanitization.png",
+                    '/sanitization',
                   ),
                   serviceCard(
                     "A/C Repair",
                     "assets/images/a_c_repair.png",
+                    '/a-c-repair',
                   ),
                 ],
               ),
@@ -75,9 +79,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget serviceCard(String title, String asset) {
+  Widget serviceCard(String title, String asset, String path) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        VxNavigator.of(context).push(Uri(path: path));
+      },
       child: Container(
         padding: EdgeInsets.all(12.0),
         margin: EdgeInsets.all(12.0),
