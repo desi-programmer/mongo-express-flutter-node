@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_client/services/register_service.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class RegisterUi extends StatefulWidget {

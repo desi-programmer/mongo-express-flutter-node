@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_client/pages/widgets/drawer.dart';
 import 'package:flutter_client/services/user.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class SanitizationService extends StatefulWidget {
