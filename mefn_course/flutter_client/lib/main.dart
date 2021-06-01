@@ -16,9 +16,12 @@ void main() {
 class MyApp extends StatelessWidget {
   final _routedelegate = VxNavigator(
     notFoundPage: (uri, params) => MaterialPage(
-      child: Center(
-        child: Image.network(
-          "https://media.tenor.com/images/00e83ff5a523055faed12d8b0c46cf02/tenor.gif",
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Center(
+          child: Image.network(
+            "https://media.tenor.com/images/00e83ff5a523055faed12d8b0c46cf02/tenor.gif",
+          ),
         ),
       ),
     ),

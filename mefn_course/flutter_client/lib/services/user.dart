@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_client/config.dart';
-import 'package:flutter_client/pages/home.dart';
+import 'package:flutter_client/pages/widgets/error_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:velocity_x/velocity_x.dart';
@@ -33,10 +31,8 @@ class User {
           'x-auth-token': _token,
         },
       );
-
       if (response.statusCode == 200) {
         // everything is ok
-
         Map decoded = jsonDecode(response.body);
         return Future.value(decoded);
       } else {
@@ -54,17 +50,15 @@ class User {
         return Future.error("ERROR");
       }
     } catch (SocketException) {
-      print("Netwrok Error !");
+      errorDialog(context, "No or Slow Network Detected !");
       return Future.error("ERROR");
     }
   }
 
   void logout(BuildContext context) async {
     String _token = await token;
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('token');
-
     // make a request to server
     http.get(
       Uri.parse(APIROUTES.logout),
@@ -93,12 +87,11 @@ class User {
 
       if (response.statusCode == 200) {
         // everything is ok
-        print("Booked !");
+        // print("Booked !");
         VxToast.show(context, msg: "Service Booked !");
       } else if (response.statusCode == 401) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('token');
-        //
         // redirect to login page
         VxNavigator.of(context).replace(
           Uri(
@@ -109,9 +102,11 @@ class User {
         return Future.error("ERROR");
       } else {
         print("Unexpcted Error ");
+        errorDialog(context, "Server Error !");
       }
     } catch (SocketException) {
       print("Netwrok Error !");
+      errorDialog(context, "No or Slow Network Detected !");
     }
   }
 
@@ -124,7 +119,6 @@ class User {
           'x-auth-token': _token,
         },
       );
-
       if (response.statusCode == 200) {
         // everything is ok
         Map decodedData = jsonDecode(response.body);
@@ -132,7 +126,6 @@ class User {
       } else if (response.statusCode == 401) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('token');
-        //
         // redirect to login page
         VxNavigator.of(context).replace(
           Uri(
@@ -142,11 +135,11 @@ class User {
         );
         return Future.error("ERROR");
       } else {
-        print("Unexpcted Error ");
+        errorDialog(context, "No or Slow Network Detected !");
         return Future.error("ERROR");
       }
     } catch (SocketException) {
-      print("Netwrok Error !");
+      errorDialog(context, "No or Slow Network Detected !");
       return Future.error("ERROR");
     }
   }

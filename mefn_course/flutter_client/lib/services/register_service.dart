@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:flutter_client/config.dart';
+import 'package:flutter_client/pages/widgets/error_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,8 @@ void register(
       }),
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
     );
-
-    // print(response.statusCode);
-    // print(response.body);
-
     if (response.statusCode == 200) {
-      // grab the toke
+      // grab the token
       var token = jsonDecode(response.body)['token'];
       // put in a local storage
       SharedPreferences pref = await SharedPreferences.getInstance();
@@ -71,6 +68,6 @@ void register(
       );
     }
   } catch (SocketException) {
-    print("ERROR");
+    errorDialog(context, "No or Slow Network Detected !");
   }
 }

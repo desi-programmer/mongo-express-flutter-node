@@ -1,5 +1,10 @@
 # flutter_client
 
-# Flutter 2 
+# BUGS and Issues might exist
+    - try running in release mode
 
-https://www.desiprogrammer.com/api/login
+```bash 
+
+ flutter run --release
+ 
+```
