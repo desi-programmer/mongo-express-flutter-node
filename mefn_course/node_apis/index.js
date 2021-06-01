@@ -23,4 +23,4 @@ app.use('/api/bookings', require('./controllers/apis/booking_history'));
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, ()=> console.log(`Server Started at PORt : ${PORT}`),);
+app.listen(PORT, () => console.log(`Server Started at  PORT : ${PORT}`),);
